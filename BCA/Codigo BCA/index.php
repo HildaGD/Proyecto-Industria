@@ -1,4 +1,5 @@
 <?php 
+ error_reporting(0);
   session_start();
   include_once "Modulos/php_conexion.php";
   include_once "Modulos/funciones.php";
@@ -18,7 +19,7 @@
       body {
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #000;
+  background-color: #e0e0e0;
   background-image: url(img/a7c12ee2.png);
   background-repeat: repeat;
       }
@@ -27,7 +28,7 @@
         max-width: 300px;
         padding: 19px 29px 29px;
         margin: 0 auto 20px;
-        background-color: #000;
+        background-color: #fff;
         border: 1px solid #e5e5e5;
         -webkit-border-radius: 5px;
            -moz-border-radius: 5px;
@@ -60,7 +61,7 @@
 
     <div class="container">
     <form name="form1" method="post" action="" class="form-signin">
-        <center><img src="img/school-building.jpg" width="300" height="300"></center><br>
+        <center><img src="img/mm.png" width="300" height="300"></center><br>
         <?php 
       if(!empty($_POST['usu']) and !empty($_POST['con'])){ 
       $usu=limpiar($_POST['usu']); 
@@ -105,7 +106,7 @@
     }else{
       echo '  <input type="text" name="usu" class="input-block-level" placeholder="Usuario" autocomplete="off style="text-align:center;" required>
           <input type="password" name="con" class="input-block-level" placeholder="Contraseña" autocomplete="off" required>
-          <div align="center"><button class="btn btn-large btn-success" type="submit"><strong>Ingresar</strong></button></div>';   
+          <div align="right"><button class="btn btn-large btn-success" type="submit"><strong>Ingresar</strong></button></div>';   
     }
     ?>
       </form>
@@ -130,5 +131,4 @@
     <script src="js/bootstrap-typeahead.js"></script>
 
   </body>
-
 </html>
