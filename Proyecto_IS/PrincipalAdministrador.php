@@ -1,4 +1,5 @@
 <?php 
+ error_reporting(0);
 	session_start();
   include_once "Modulos/php_conexion.php";
   include_once "Modulos/class_buscar.php";
@@ -8,9 +9,7 @@
 		$admin=limpiar($_SESSION['cod_user']);
     $oAdmin=new Consultar_Profesor($admin,$conexion);
 		$nombre_admin=$oAdmin->consultar('NOMBRES').' '.$oAdmin->consultar('APELLIDOS');
-	}else{
-		//header('Location:error.php');
-	}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -22,6 +21,8 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
+      <!-- Agregado -->
+    
     <link href="css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
@@ -55,7 +56,7 @@
             <td>
             	<table class="table table-bordered">
                   <tr class="info">
-                    <td colspan="2"><h2 align="center"><img src="img/salon.png" width="350" height="350"> </h2></td>
+                    <td colspan="2"><h2 align="center"><img src="img/escuela.png" width="350" height="350"> </h2></td>
                   </tr>
                     <!--<?php 
   				  	       $pa=mysqli_query($conexion,"SELECT a.nombre_clase, a.ID_CLASE FROM clase as a inner join maestroxclase as b on a.ID_CLASE=b.ID_CLASE where ID_MAESTRO='$profesor';");				
@@ -99,3 +100,9 @@
 
   </body>
 </html>
+<?php 
+
+}else{
+    header("HTTP/1.1 403 Forbidden");
+  }
+?>
