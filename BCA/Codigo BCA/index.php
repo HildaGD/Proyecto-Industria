@@ -14,6 +14,9 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
+    <!-- Agregado  -->
+    <link rel="stylesheet"  href="css/main.css" />
+
     <link href="css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {

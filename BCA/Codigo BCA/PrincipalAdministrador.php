@@ -21,6 +21,8 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
+      <!-- Agregado -->
+    
     <link href="css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
@@ -54,7 +56,7 @@
             <td>
             	<table class="table table-bordered">
                   <tr class="info">
-                    <td colspan="2"><h2 align="center"><img src="img/salon.png" width="350" height="350"> </h2></td>
+                    <td colspan="2"><h2 align="center"><img src="img/escuela.png" width="350" height="350"> </h2></td>
                   </tr>
                     <!--<?php 
   				  	       $pa=mysqli_query($conexion,"SELECT a.nombre_clase, a.ID_CLASE FROM clase as a inner join maestroxclase as b on a.ID_CLASE=b.ID_CLASE where ID_MAESTRO='$profesor';");				
