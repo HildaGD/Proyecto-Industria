@@ -143,7 +143,7 @@
                             $telOfic=limpiar($_POST['telOfic']);
                             $parentesco=limpiar($_POST['parentesco']);                             
                            
-                        $oGuardar=new Proceso_Alumno($conexion, $id, $nombre, $identAlum,$fecha, $esc, $trans, $direccion, $estado, $telOfic,$religion,$cargo,$telOfic, $trabajo, $profesion, $parentesco,$nombreEncargado,'','','','');  
+                        $oGuardar=new Proceso_Alumno($conexion, $id, $nombre, $identAlum,$fecha, $esc, $trans, $direccion, $estado, $telOfic,$religion,$cargo,$telOfic, $trabajo, $profesion, $parentesco,$nombreEncargado,'','','','','');  
                         $oGuardar->guardar();
                         }
 
@@ -153,7 +153,7 @@
                             $seccion=limpiar($_POST['seccion']);  
                             $jornada=limpiar($_POST['jornada']);  
                             $periodo=limpiar($_POST['periodo']);
-                            $oGuardar=new Proceso_Alumno($conexion, $id, '','', '','', '', '', '','', '', '', '','','','', '',$grado,$seccion,$jornada,'');  
+                            $oGuardar=new Proceso_Alumno($conexion, $id, '','', '','', '', '', '','', '', '', '','','','', '',$grado,$seccion,$jornada,'','');  
                             $oGuardar->matricular($grado,$seccion,$jornada,$periodo);
                         }
 
@@ -183,7 +183,7 @@
                             $medicamento=limpiar($_POST['medicamento']);
                             $clinica=limpiar($_POST['clinica']);
                             $atenciones=limpiar($_POST['atenciones']);
-                            $oGuardar=new Proceso_Alumno($conexion, $id, $nombre, $identAlum,$fecha, $esc, $trans, $direccion, $estado, $telefono,$religion,$cargo,$telOfic,$trabajo,$profesion, $parentesco,$nombreEncargado,'','','', $encargado,'','','','','','','','','');  
+                            $oGuardar=new Proceso_Alumno($conexion, $id, $nombre, $identAlum,$fecha, $esc, $trans, $direccion, $estado, $telefono,$religion,$cargo,$telOfic,$trabajo,$profesion, $parentesco,$nombreEncargado,'','','', $encargado,'','','','','','','','','','');  
                             $oGuardar->guardar();
                         
                         }
@@ -210,7 +210,8 @@
                         if(!empty($_POST['buscar']))
                         {
                             $buscar=limpiar($_POST['buscar']);
-                            $pa=mysqli_query($conexion, "SELECT distinct a.ID_ALUMNO,a.NOMBRE,(YEAR(CURDATE())- YEAR(FECHA_NACIMIENTO) edad,a.ESCUELA_PROCEDENCIA,a.UTILIZA_TRANSPORTE,g.NOMBRE_GRADO,s.NOMBRE_SECCION,j.NOMBRE_JORNADA,a.ACTIVO_ALUMNO FROM alumno AS A 
+                            $pa=mysqli_query($conexion, "SELECT distinct a.ID_ALUMNO,a.NOMBRE,a.DIRECCION,a.RELIGION,a.FECHA_NACIMIENTO,YEAR(CURDATE()-YEAR(a.FECHA_NACIMIENTO)) edad,
+                                                        a.ESCUELA_PROCEDENCIA,a.UTILIZA_TRANSPORTE,g.NOMBRE_GRADO,s.NOMBRE_SECCION,j.NOMBRE_JORNADA,a.ACTIVO_ALUMNO FROM alumno AS A 
                                                         inner join informacion_medica AS B on A.ID_INFO_MEDICA=B.ID_INFO_MEDICA
                                                         INNER JOIN clasexalumno as ca on ca.ID_ALUMNO = a.ID_ALUMNO
                                                         INNER JOIN clasesxgrado as cg on cg.ID_CLASE = ca.ID_CLASE
@@ -219,7 +220,8 @@
                                                         INNER JOIN seccion as s on s.ID_SECCION = sg.ID_SECCION and s.ID_SECCION= ca.ID_SECCION 
                                                         INNER JOIN jornada as j on sg.ID_JORNADA = j.ID_JORNADA AND j.ID_JORNADA = ca.ID_JORNADA
                                                         UNION ALL
-                                                        SELECT a.ID_ALUMNO,a.NOMBRE,(YEAR(CURDATE())- YEAR(FECHA_NACIMIENTO) edad,a.ESCUELA_PROCEDENCIA,a.UTILIZA_TRANSPORTE,'','','',a.ACTIVO_ALUMNO FROM alumno AS A 
+                                                        SELECT a.ID_ALUMNO,a.NOMBRE,a.DIRECCION,a.RELIGION,a.FECHA_NACIMIENTO,YEAR(CURDATE()-YEAR(a.FECHA_NACIMIENTO)) edad,
+                                                        a.ESCUELA_PROCEDENCIA,a.UTILIZA_TRANSPORTE,'','','',a.ACTIVO_ALUMNO FROM alumno AS A 
                                                         inner join informacion_medica AS B on A.ID_INFO_MEDICA=B.ID_INFO_MEDICA
                                                         WHERE a.ID_ALUMNO NOT IN (SELECT a.ID_ALUMNO
                                                                                     FROM alumno AS A 
@@ -234,7 +236,8 @@
                                                         NWHERE NOMBRE LIKE '%$buscar%' or ID_ALUMNO='$buscar'");  
                                                                                 }else
                         {
-                            $pa=mysqli_query($conexion, "SELECT distinct a.ID_ALUMNO,a.NOMBRE,YEAR(CURDATE())-YEAR(A.FECHA_NACIMIENTO) edad, a.ESCUELA_PROCEDENCIA,a.UTILIZA_TRANSPORTE,g.NOMBRE_GRADO,s.NOMBRE_SECCION,j.NOMBRE_JORNADA,a.ACTIVO_ALUMNO FROM alumno AS A 
+                            $pa=mysqli_query($conexion, "SELECT distinct a.ID_ALUMNO,a.NOMBRE,a.DIRECCION,a.RELIGION,a.FECHA_NACIMIENTO,YEAR(CURDATE()-YEAR(a.FECHA_NACIMIENTO)) edad, 
+                                                        a.ESCUELA_PROCEDENCIA,a.UTILIZA_TRANSPORTE,g.NOMBRE_GRADO,s.NOMBRE_SECCION,j.NOMBRE_JORNADA,a.ACTIVO_ALUMNO FROM alumno AS A 
                                                         inner join informacion_medica AS B on A.ID_INFO_MEDICA=B.ID_INFO_MEDICA
                                                         INNER JOIN clasexalumno as ca on ca.ID_ALUMNO = a.ID_ALUMNO
                                                         INNER JOIN clasesxgrado as cg on cg.ID_CLASE = ca.ID_CLASE
@@ -243,7 +246,8 @@
                                                         INNER JOIN seccion as s on s.ID_SECCION = sg.ID_SECCION and s.ID_SECCION= ca.ID_SECCION 
                                                         INNER JOIN jornada as j on sg.ID_JORNADA = j.ID_JORNADA AND j.ID_JORNADA = ca.ID_JORNADA
                                                         UNION ALL
-                                                        SELECT a.ID_ALUMNO,a.NOMBRE,YEAR(CURDATE())-YEAR(A.FECHA_NACIMIENTO) edad,a.ESCUELA_PROCEDENCIA,a.UTILIZA_TRANSPORTE,'','','',a.ACTIVO_ALUMNO FROM alumno AS A 
+                                                        SELECT a.ID_ALUMNO,a.NOMBRE,a.DIRECCION,a.RELIGION,a.FECHA_NACIMIENTO,YEAR(CURDATE()-YEAR(a.FECHA_NACIMIENTO)) edad,
+                                                        a.ESCUELA_PROCEDENCIA,a.UTILIZA_TRANSPORTE,'','','',a.ACTIVO_ALUMNO FROM alumno AS A 
                                                         inner join informacion_medica AS B on A.ID_INFO_MEDICA=B.ID_INFO_MEDICA
                                                         WHERE a.ID_ALUMNO NOT IN (SELECT a.ID_ALUMNO
                                                                                     FROM alumno AS A 
@@ -262,8 +266,23 @@
                                 {
                                     $nombre=limpiar($_POST['nombreAl']);
                                     $id=limpiar($_POST['idAl']);    
-                                    $oGuardar=new Proceso_Alumno($conexion,$id,'', '', '', '', '', '', '', '', '', '', '','', '', '', '', '', '', '','','');
+                                    $oGuardar=new Proceso_Alumno($conexion,$id,'', '', '', '', '', '', '', '', '', '', '','', '', '', '', '', '', '','','','');
                                      $oGuardar->eliminar($conexion);                   
+                                }
+                                if ($_POST['confirmar'] == "5") 
+                                {
+                                    $id=limpiar($_POST['idA']);  
+                                    $nombre=limpiar($_POST['nombre']);
+                                    $nacimiento=limpiar($_POST['nacimiento']); 
+                                    $fecha=limpiar($_POST['fecha']);   
+                                    $trans=limpiar($_POST['trans']);                                 
+                                    $direccion=limpiar($_POST['direccion']);
+                                    $religion=limpiar($_POST['religion']);
+                                    $grado=limpiar($_POST['grado']);
+                                    $seccion=limpiar($_POST['seccion']);
+                                    $estado=limpiar($_POST['estado']);
+                                    $oGuardar=new Proceso_Alumno($conexion, $id, $nombre, '', $fecha, '', $trans, $direccion, $estado, '', $religion, '', '', '', '', '', '', $grado, $seccion, '', '', $nacimiento);  
+                                    $oGuardar->actualizar();                 
                                 }
                             } 
                              if(!empty($_POST['alergias']))
@@ -281,7 +300,7 @@
                                     $medicamento=limpiar($_POST['medicamento']);
                                     $clinica=limpiar($_POST['clinica']);
                                     $atenciones=limpiar($_POST['atenciones']);   
-                                    $oGuardar=new Proceso_Alumno($conexion,$id,$nombre, '', '', '', '', '', '', '', '', '', '','', '', '', '', '', '', '',''/*,$alergias,$sangre,$visuales,$enfermedades,$medicamento,$clinica,$atenciones,$idinformacion*/);
+                                    $oGuardar=new Proceso_Alumno($conexion,$id,$nombre, '', '', '', '', '', '', '', '', '', '','', '', '', '', '', '', '','',''/*,$alergias,$sangre,$visuales,$enfermedades,$medicamento,$clinica,$atenciones,$idinformacion*/);
                                      $oGuardar->infomedica($conexion);                   
                                 
                             }    
@@ -426,6 +445,7 @@
                         <div id="a<?php echo $row['ID_ALUMNO']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <form name="form5" method="post" action="">
                         <input type="hidden" name="idA" value="<?php echo $row['ID_ALUMNO']; ?>">
+                        <input type="hidden" name="confirmar" autocomplete="off" required value="5"> 
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             <h3 id="myModalLabel" align="center">Actualizar Alumno <br> [ <?php echo $row['NOMBRE']; ?> ]</h3>
@@ -448,7 +468,7 @@
                                     </select><br>
                                 </div>
                                 <div class="span6">
-                                    <strong>Direccin de Residencia</strong><br>
+                                    <strong>Dirección de Residencia</strong><br>
                                     <input type="text" name="direccion" value="<?php echo $row['DIRECCION']; ?>" autocomplete="off" required><br>
                                     <strong>Religión</strong><br>
                                     <input type="text" name="religion" value="<?php echo $row['RELIGION']; ?>" autocomplete="off" required><br>
@@ -458,7 +478,11 @@
                                             <?php
                                                 $p=mysqli_query($conexion,"SELECT * FROM grado WHERE GRADO_ACTIVO='1'");              
                                                 while($r=mysqli_fetch_array($p)){
-                                                        echo '<option value="'.$r['ID_GRADO'].'" selected>'.$r['NOMBRE_GRADO'].'</option>';
+                                                    if(empty($row['NOMBRE_GRADO'])) {
+                                                        echo '<option value="'.$r['ID_GRADO'].'">'.$r['NOMBRE_GRADO'].'</option>';
+                                                    } else {
+                                                        echo '<option value="'.$r['ID_GRADO'].'" '.($row['NOMBRE_GRADO'] == $r['NOMBRE_GRADO'] ? 'selected' : '').'>'.$r['NOMBRE_GRADO'].'</option>';
+                                                    }
                                                 }
                                             ?>
                                         </select>
@@ -468,7 +492,11 @@
                                             <?php
                                                 $p=mysqli_query($conexion,"SELECT * FROM seccion WHERE SECCION_ACTIVO='1'");              
                                                 while($r=mysqli_fetch_array($p)){
-                                                        echo '<option value="'.$r['ID_SECCION'].'" selected>'.$r['NOMBRE_SECCION'].'</option>';
+                                                    if(empty($row['NOMBRE_GRADO'])) {
+                                                        echo '<option value="'.$r['ID_SECCION'].'">'.$r['NOMBRE_SECCION'].'</option>';
+                                                    } else {
+                                                        echo '<option value="'.$r['ID_SECCION'].'" '.($row['NOMBRE_SECCION'] == $r['NOMBRE_SECCION'] ? 'selected' : '').'>'.$r['NOMBRE_SECCION'].'</option>';
+                                                    }
                                                 }
                                             ?>
                                         </select>

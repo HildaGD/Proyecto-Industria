@@ -5,9 +5,7 @@ date_default_timezone_set("America/Tegucigalpa");                   //Establece 
 mysqli_query($conexion,"SET NAMES utf8");                           //Realiza una consulta
 mysqli_query($conexion,"SET CHARACTER_SET utf");
 $s='Bs';
-
 $requestData= $_REQUEST;
-
 $columns = array( 
 // datatable column index  => database column name 
 0 => 'NOMBRE',
@@ -22,7 +20,6 @@ $columns = array(
    
 );
          
-
 $sql="SELECT distinct a.ID_ALUMNO,a.NOMBRE,YEAR(CURDATE())-YEAR(A.FECHA_NACIMIENTO) edad, a.ESCUELA_PROCEDENCIA,a.UTILIZA_TRANSPORTE,g.NOMBRE_GRADO,s.NOMBRE_SECCION,j.NOMBRE_JORNADA,a.ACTIVO_ALUMNO FROM alumno AS A 
                                                         inner join informacion_medica AS B on A.ID_INFO_MEDICA=B.ID_INFO_MEDICA
                                                         INNER JOIN clasexalumno as ca on ca.ID_ALUMNO = a.ID_ALUMNO
@@ -45,15 +42,10 @@ $sql="SELECT distinct a.ID_ALUMNO,a.NOMBRE,YEAR(CURDATE())-YEAR(A.FECHA_NACIMIEN
                                                                                     INNER JOIN seccion as s on s.ID_SECCION = sg.ID_SECCION
                                                                                     INNER JOIN jornada as j on sg.ID_JORNADA = j.ID_JORNADA AND j.ID_JORNADA = ca.ID_JORNADA
                                                                                     WHERE CA.ESTADO=1)";
-
-
-
 if($query=mysqli_query($conexion, $sql)){
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  
-
 }
-
 $sql = "SELECT distinct a.ID_ALUMNO,a.NOMBRE,YEAR(CURDATE())-YEAR(A.FECHA_NACIMIENTO) edad, a.ESCUELA_PROCEDENCIA,a.UTILIZA_TRANSPORTE,g.NOMBRE_GRADO,s.NOMBRE_SECCION,j.NOMBRE_JORNADA,a.ACTIVO_ALUMNO FROM alumno AS A 
                                                         inner join informacion_medica AS B on A.ID_INFO_MEDICA=B.ID_INFO_MEDICA
                                                         INNER JOIN clasexalumno as ca on ca.ID_ALUMNO = a.ID_ALUMNO
@@ -93,16 +85,9 @@ $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestD
 /* $requestData['order'][0]['column'] contains colmun index, $requestData['order'][0]['dir'] contains order such as asc/desc  */ 
 }   
 $query=mysqli_query($conexion, $sql) or die();
-
-
-
-
 $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 $nestedData=array(); 
-
-
-
 $nestedData[] = $row["NOMBRE"];
 $nestedData[] = $row["edad"];
 $nestedData[] = $row["ESCUELA_PROCEDENCIA"];
@@ -113,17 +98,12 @@ $nestedData[] = $row["NOMBRE_JORNADA"];
 $nestedData[] = $row["ACTIVO_ALUMNO"];
 $nestedData[] = $row["ID_ALUMNO"];
 $data[] = $nestedData;
-
 }
-
-
-
 $json_data = array(
         "draw"=> intval( $requestData['draw'] ),   // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw. 
         "recordsTotal"=> intval( $totalData ),  // total number of records
         "recordsFiltered" => intval( $totalFiltered ), // total number of records after searching, if there is no searching then totalFiltered = totalData
         "data" => $data   // total data array
         );
-
 echo json_encode($json_data);  // send data as json format
 ?>

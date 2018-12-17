@@ -24,9 +24,10 @@ class Proceso_Alumno{
     var $profesion;
     var $encargado;
     var $trabajo;
+    var $nacimiento;
 
 
-    function __construct($conexion, $id, $nombre, $identAlum,$fecha, $esc, $trans, $direccion, $estado, $telefono,$religion,$cargo,$telOfic, $trabajo, $profesion, $parentesco,$nombreEncargado,$grado,$seccion,$jornada,$encargado){
+    function __construct($conexion, $id, $nombre, $identAlum,$fecha, $esc, $trans, $direccion, $estado, $telefono,$religion,$cargo,$telOfic, $trabajo, $profesion, $parentesco,$nombreEncargado,$grado,$seccion,$jornada,$encargado, $nacimiento){
     	$this->conexion=$conexion;
         $this->id=$id;            
         $this->nombre=$nombre;   
@@ -47,6 +48,7 @@ class Proceso_Alumno{
         $this->jornada=$jornada;
         $this->profesion=$profesion;
         $this->encargado=$encargado;
+        $this->nacimiento=$nacimiento;
 
     }
     
@@ -91,8 +93,8 @@ class Proceso_Alumno{
                                                 FECHA_NACIMIENTO, 
                                                 RELIGION, 
                                                 NO_IDENTIDAD) 
-                                    VALUES ('$id',1,'$nombre','$esc','$trans',0,'N/A','$estado','$direccion',' ','$fecha','$religion','$identAlum')");
-            echo mensajes('El alumno "'.$nombre.'" se guardó con Exito','verde');
+                                    VALUES ('$id',1,'$nombre','$esc','$trans',0,'N/A','$estado','$direccion','','$fecha','$religion','$identAlum')");
+            echo mensajes('El alumno "'.$nombre.'" se guardó con éxito','verde');
             
 //Encargado
             mysqli_query($conexion, "INSERT INTO encargado
@@ -124,34 +126,39 @@ class Proceso_Alumno{
      
 	
 	function actualizar(){
-        $this->id=$id;          
-        $this->nombre=$nombre;          
-        $this->esc=$esc;        
-        $this->trans=$trans;    
-        $this->notas=$notas;
-        $this->croquis=$croquis;   
-        $this->estado=$estado;  
-        $this->direccion=$direccion;
-        $this->nacimiento=$nacimiento; 
-        $this->fecha=$fecha;      
-        $this->religion=$religion;
-        $this->identidad=$identidad;		
-		
+
+        //$this->id=$id;          
+        //$this->nombre=$nombre;          
+        //$this->esc=$esc;        
+        //$this->trans=$trans;    
+        //$this->notas=$notas;
+        //$this->croquis=$croquis;   
+        //$this->estado=$estado;  
+        //$this->direccion=$direccion;
+        //$this->nacimiento=$nacimiento; 
+        //$this->fecha=$fecha;      
+        //$this->religion=$religion;
+        //$this->identidad=$identidad;
+        $id = $this->id;
+        $nombre = $this->nombre;
+        $trans = $this->trans;
+        $estado = $this->estado;  
+        $direccion = $this->direccion;
+        $nacimiento = $this->nacimiento; 
+        $fecha = $this->fecha;
+        $religion = $this->religion;
+        
         try{
-            mysql_query($conexion, "UPDATE alumno SET NOMBRE='$nombre',
-                                        ESCUELA_PROCEDENCIA='$esc',
-                                        UTILIZA_TRANSPORTE='$trans',
-                                        NOTAS='$notas',
-                                        CROQUIS='$croquis',
-                                        ACTIVO_ALUMNO='$estado',
+            mysqli_query($conexion, "UPDATE alumno SET NOMBRE='$nombre',
+                                        UTILIZA_TRANSPORTE=$trans,
+                                        ACTIVO_ALUMNO=$estado,
                                         DIRECCION='$direccion',
                                         LUGAR_NACIMIENTO='$nacimiento',
                                         FECHA_NACIMIENTO='$fecha',
-                                        RELIGION='$religion',
-                                        NO_IDENTIDAD='$identidad'
-                                WHERE ID_ALUMNO='$id'");
+                                        RELIGION='$religion'
+                                WHERE ID_ALUMNO=$id");
 
-            echo mensajes('El usuario "'.$_POST['nombre'].'" se actualizó con Exito','verde');
+            echo mensajes('El usuario "'.$nombre.'" se actualizó con éxito','verde');
         }catch(Exception $e)
             {echo mensajes('ERROR LANZADO '.$e,'rojo');} 
 		
@@ -163,7 +170,7 @@ class Proceso_Alumno{
         $conexion=$this->conexion; 
         try{
             mysqli_query($conexion, "UPDATE alumno SET ACTIVO_ALUMNO=0 WHERE ID_ALUMNO='$id'");
-            echo mensajes('El Alumno "'.$_POST['nombreAl'].'" se eliminó con Exito','verde');
+            echo mensajes('El Alumno "'.$_POST['nombreAlum'].'" se eliminó con éxito','verde');
         }catch(Exception $e)
             {echo mensajes('ERROR LANZADO '.$e,'rojo');}  
     }
@@ -217,12 +224,12 @@ class Proceso_Alumno{
                                                                  ANIO) 
         					                        VALUES ('$ID_PARCIAL','$seccion','$ID_ALUMNO','$ID_CLASE',0,0,0,0,0,0,'$periodo')");
         					                                    }	          
-                        }echo mensajes('El alumno fue matriculado con exito','verde');}
+                        }echo mensajes('El alumno fue matriculado con éxito','verde');}
                else{
-                    echo mensajes('El alumno ya se encuentra matriculado en la seccíon','rojo');
+                    echo mensajes('El alumno ya se encuentra matriculado en la sección','rojo');
                     }
             }else{
-            echo mensajes('La seccion y jornada no esta disponible','rojo');
+            echo mensajes('La sección y jornada no esta disponible','rojo');
             }
 
         }catch(Exception $e)
