@@ -1,7 +1,29 @@
-RECOMENDACIONES GENERALES:
+Conclusiones
 
-1. SE RECOMIENDA DEJAR UN LISTADO DE LOS EXPLORADORES EN LOS CUALES ES COMPATIPLE EL PROYECTO.
+•	Se ratificó que el desarrollo web es una tendencia que sigue en escala hacia adelante, 
+y de muy buen agrado para el usuario final.
 
-2. REALIZAR UNA DESCRIPCIÓN DEL ESTANDAR UTILIZADO EN EL PROYECTO.
+•	Se demostró que para realizar cualquier tipo de sistema, este debe de tener una base estándar,
+ ya que con ello puede facilitar la venta de otro sistema similar, sin hacer grandes cambios, 
+simplemente el de personalizarlo.
 
-3. DEJAR LOS SERVIDORES EN LOS CUALES SEA COMPATIBLE (WAMP SERVER, XAMPP SERVER).
+Recomendaciones
+
+•	Tener una óptima comunicación con el cliente para evitar discrepancias y posibles modificaciones 
+del programa a mitad del desarrollo, con el fin de no tener entregas retrasadas ya estipuladas.
+
+•	Verificar los requerimientos necesarios con el cliente para que al momento de la entrega del 
+sistema este funcione correctamente y no haya tener que hacer ninguna modificación debido a la falta de 
+compatibilidad.
+
+•	Independientemente de lo que el cliente solicite, prediseñar el programa de acuerdo a las normas
+ y estándares que existan en el país, debido a que puede generar una oportunidad de darle continuidad al 
+producto para otros posibles clientes si no se hizo ningun acuerdo de exclusividad con el primero.
+
+
+
+   SE RECOMIENDA DEJAR UN LISTADO DE LOS EXPLORADORES EN LOS CUALES ES COMPATIPLE EL PROYECTO.
+
+   REALIZAR UNA DESCRIPCIÓN DEL ESTANDAR UTILIZADO EN EL PROYECTO.
+
+   DEJAR LOS SERVIDORES EN LOS CUALES SEA COMPATIBLE (WAMP SERVER, XAMPP SERVER).
