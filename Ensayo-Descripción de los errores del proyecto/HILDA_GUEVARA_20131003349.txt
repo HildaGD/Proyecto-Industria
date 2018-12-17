@@ -1,4 +1,20 @@
-El proyecto dio inicio a su desarrollo en la clase de ingeniería de software, permitiendo seguir su desarrollo en la clase actual (Industria del Software), por lo cual, ya tenía un código ya desarrollado, sin embargo, la falta de documentación técnica, y la duplicidad de proyecto, hizo que el trabajo fuera realmente complejo.
-El primer problema encontrado fueron las tres versiones de proyectos que fueron transferidos. Ya que eran proyectos NO funcionales finales, debido a que el grupo anterior que trabajo en él, no utilizaba herramientas como GITHUB para evitar la duplicidad de trabajos. Encontrar cual era la versión final del proyecto, fue a base de prueba y error. Esto conlleva al segundo problema que fue la versión de WAMP SERVER y PHP. La versión utilizada en el proyecto fue la WAMP SERVER 2.5, que no estaba documentación, ya que el grupo actual se encontraba utilizando la versión nueva de estos componentes. Para solucionar este problema se tuvo que instalar la versión 2.5, que se estaba utilizando originalmente.
-El tercer problema encontrado fue en la base de datos, ya que no utilizaba los estándares de nombre. Por ejemplo: nombre de las tablas (TBL_USUARIOS). Se encontró el mismo problema de versiones que el proyecto. Incluso al ingresar el script de la base de datos, producía un error.
-El cuarto problema fue el código del proyecto, debido a que en el proyecto utilizaron una herramienta que generaba código HTML, por lo cual no seguía un estándar en todo el código. Tampoco tenían comentarios para que funcionaba cada ventana modal, debido a que las ventanas modales de eliminar, actualizar y agregar, se encontraban en un solo documento, se tornó un poco confuso, comprender todo el código de cada página.
+El proyecto dio inicio a su desarrollo en la clase de ingeniería de software, 
+permitiendo seguir su desarrollo en la clase actual (Industria del Software), por lo cual, 
+ya tenía un código ya desarrollado, sin embargo, la falta de documentación técnica, y la duplicidad de proyecto,
+ hizo que el trabajo fuera realmente complejo.
+El primer problema encontrado fueron las tres versiones de proyectos que fueron transferidos. 
+Ya que eran proyectos NO funcionales finales, debido a que el grupo anterior que trabajo en él, 
+no utilizaba herramientas como GITHUB para evitar la duplicidad de trabajos. 
+Encontrar cual era la versión final del proyecto, fue a base de prueba y error. 
+Esto conlleva al segundo problema que fue la versión de WAMP SERVER y PHP. 
+La versión utilizada en el proyecto fue la WAMP SERVER 2.5, que no estaba documentación,
+ ya que el grupo actual se encontraba utilizando la versión nueva de estos componentes. 
+Para solucionar este problema se tuvo que instalar la versión 2.5, que se estaba utilizando originalmente.
+El tercer problema encontrado fue en la base de datos, ya que no utilizaba los estándares de nombre. 
+Por ejemplo: nombre de las tablas (TBL_USUARIOS). Se encontró el mismo problema de versiones que el proyecto.
+ Incluso al ingresar el script de la base de datos, producía un error.
+El cuarto problema fue el código del proyecto, debido a que en el proyecto utilizaron una herramienta 
+que generaba código HTML, por lo cual no seguía un estándar en todo el código. 
+Tampoco tenían comentarios para que funcionaba cada ventana modal, debido a que las ventanas modales de 
+eliminar, actualizar y agregar, se encontraban en un solo documento, se tornó un poco confuso, comprender 
+todo el código de cada página.
