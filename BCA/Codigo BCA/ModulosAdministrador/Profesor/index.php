@@ -61,7 +61,7 @@ error_reporting(0);
                                 <a href="#nuevo" role="button" class="btn" data-toggle="modal">
                                     <strong><i class="icon-plus"></i> Ingresar Nuevo Usuarios</strong>
                                 </a>
-                                
+                               <!-- INICIO MODAL AGREGAR PROFESOR -->
                                 <div id="nuevo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <form name="form2" method="post" action="">
                                     <div class="modal-header">
@@ -116,8 +116,10 @@ error_reporting(0);
                                     </form>
                                </div>
                                 
+                                <!-- FIN  MODAL AGREGAR PROFESOR -->
                             </div>
                         </div>
+
                     </td>
                   </tr>
                 </table>
@@ -163,7 +165,7 @@ error_reporting(0);
                         }
                     }
                 ?>
-               
+               <!-- INICIO TABLA CON INFORMACION DE LOS MAESTROS (MOSTRAR) -->
                     <table id="tabla_profesor" class="table table-bordered table table-hover">
                     <thead>
                       <tr class="info">
@@ -260,7 +262,7 @@ error_reporting(0);
                             </a>
                         </align>
                     </td> -->
-
+                    <!--  INICIO MODAL ACTUALIZAR PROFESOR -->
                         <div id="a<?php echo $row['ID_PERSONA']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <form name="form2" method="post" action="">
                             <input type="hidden" name="id" value="<?php echo $row['ID_PERSONA']; ?>">
@@ -318,6 +320,10 @@ error_reporting(0);
                             </form>
                        </div>
 
+                       <!-- FIN  MODAL ACTUALIZAR PROFESOR -->
+
+                       <!-- INICIO CAMBIO DE ESTADO A INACTIVO- ELIMINAR -->
+
                             <div id="b<?php echo $row['ID_PERSONA']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <form name="form3" method="post" action="">
                                 <input type="hidden" name="id" value="<?php echo $row['ID_PERSONA']; ?>">
@@ -343,7 +349,10 @@ error_reporting(0);
                                 </div>
                                 </form>
                     </div>
-                      
+
+                    <!-- FIN CAMBIO DE ESTADO A INACTIVO- ELIMINAR -->
+                    
+                    <!-- INICIO ASIGNAR CLASE A PROFESOR -->
 
                      <div id="c<?php echo $row['ID_PERSONA']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <form name="form3" method="post" action="">
@@ -388,11 +397,14 @@ error_reporting(0);
                                 </div>
                                 </form>
                     </div>    
+                    <!-- FIN ASIGNAR CLASES A PROFESORS -->
                     </td>
                   </tr>
                   <?php } ?>
                   </thead>
                 </table>
+
+                <!-- FIN TABLA MOSTRAR MAESTROS -->
             </td>
           </tr>
         </table>

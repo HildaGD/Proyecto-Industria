@@ -57,7 +57,7 @@
                                 <a href="#nuevo" role="button" class="btn" data-toggle="modal">
                                     <strong><i class="icon-plus"></i> Ingresar Nuevo Alumno</strong>
                                 </a>
-                                
+                                <!-- REGISTRAR ALUMNO-->
                                 <div id="nuevo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <form name="form2" method="post" action="">
                                     <div class="modal-header">
@@ -120,6 +120,8 @@
                                 
                             </div>
                         </div>
+
+                        
                     </td>
                   </tr>
                 </table>
@@ -190,6 +192,9 @@
                 }
                     
                 ?>
+            <!-- FIN DE REGISTRAR ALUMNO-->
+
+            <!-- INICIO DE DATOS ALUMNO - TABLA -->
              <table id="tabla_alumno" class="table table-bordered table table-hover">
                     <thead>
                   <tr class="info">
@@ -316,7 +321,7 @@
                             }
                             
                   ?>
-
+                            <!-- INICIO DE MODAL MATRICULAR ALUMNO-->
                          <div id="m<?php echo $row['ID_ALUMNO']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <form name="eliminar" method="post" action="">
                                 <input type="hidden" name="id" value="<?php echo $row['ID_ALUMNO']; ?>">
@@ -372,6 +377,10 @@
                                 </div>
                             </form>
                         </div>
+
+                        <!-- FIN DE MODAL MATRICULAR ALUMNO-->
+
+                        <!-- INICIO DE MODAL AGREGAR MAS INFORMACION MEDICA DATOS DEL ALUMNO-->
                     
                         <div id="x<?php echo $row['ID_ALUMNO']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <form name="form53" method="post" action="">
@@ -441,6 +450,13 @@
                             </form>
                         </div>
 
+
+                        <!-- FIN DE MODAL AGREGAR MAS INFORMACION MEDICA DATOS DEL ALUMNO-->
+
+
+                        
+
+                        <!-- INICIO DE MODAL ACTUALIZAR DATOS DEL ALUMNO-->
 
                         <div id="a<?php echo $row['ID_ALUMNO']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <form name="form5" method="post" action="">
@@ -515,6 +531,13 @@
                         </form>
                     </div>
 
+
+                        <!-- FIN DE MODAL ACTUALIZAR DATOS DEL ALUMNO-->
+
+                    
+                    
+
+                        <!-- INICIO DE MODAL ELIMINAR DATOS DEL ALUMNO (CAMBIO A ESTADO INACTIVO)-->
                     
                      <div id="q<?php echo $row['ID_ALUMNO']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <form name="form3" method="post" action="">
@@ -540,6 +563,9 @@
                         </div>
                         </form>
                     </div>
+                    
+
+                        <!-- FIN DE MODAL ELIMINAR DATOS DEL ALUMNO (CAMBIO A ESTADO INACTIVO)-->
 
                   <?php } ?>
               </thead>
@@ -548,6 +574,8 @@
             </td>
           </tr>
         </table>
+
+        <!-- FIN DE TABLA DATOS DE LOS  ALUMNOS-->
     </div>
     
     <!-- Le javascript ../../js/jquery.js
