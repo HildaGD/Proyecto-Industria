@@ -12,6 +12,7 @@
               <li class="active"><a href="ModulosAdministrador/Alumnos">Administrar Alumnos</a></li>
               <li class="active"><a href="ModulosAdministrador/Profesor">Administrar Usuarios</a></li>
               <li class="active"><a href="ModulosAdministrador/Datos">Administrar Información</a></li>
+              <li class="active"><a href="ModulosAdministrador/Calificacion">Calificaciones</a></li>
             </ul>
             <ul class="nav pull-right">
                 <li class="divider-vertical"></li>
