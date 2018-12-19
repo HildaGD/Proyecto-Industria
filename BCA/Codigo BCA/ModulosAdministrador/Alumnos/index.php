@@ -238,7 +238,7 @@
                                                                                     INNER JOIN seccion as s on s.ID_SECCION = sg.ID_SECCION
                                                                                     INNER JOIN jornada as j on sg.ID_JORNADA = j.ID_JORNADA AND j.ID_JORNADA = ca.ID_JORNADA
                                                                                     WHERE CA.ESTADO=1) 
-                                                        NWHERE NOMBRE LIKE '%$buscar%' or ID_ALUMNO='$buscar'");  
+                                                        WHERE NOMBRE LIKE '%$buscar%' or ID_ALUMNO='$buscar'");  
                                                                                 }else
                         {
                             $pa=mysqli_query($conexion, "SELECT distinct a.ID_ALUMNO,a.NOMBRE,a.DIRECCION,a.RELIGION,a.FECHA_NACIMIENTO,YEAR(CURDATE()-YEAR(a.FECHA_NACIMIENTO)) edad, 

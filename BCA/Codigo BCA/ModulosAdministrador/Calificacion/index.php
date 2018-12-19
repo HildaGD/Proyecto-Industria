@@ -222,28 +222,8 @@
                         if(!empty($_POST['buscar']))
                         {
                             $buscar=limpiar($_POST['buscar']);
-                            $pa=mysqli_query($conexion, "SELECT distinct a.ID_ALUMNO,a.NOMBRE,(YEAR(CURDATE())- YEAR(FECHA_NACIMIENTO) edad,a.ESCUELA_PROCEDENCIA,a.UTILIZA_TRANSPORTE,g.NOMBRE_GRADO,s.NOMBRE_SECCION,j.NOMBRE_JORNADA,a.ACTIVO_ALUMNO FROM alumno AS A 
-                                                        inner join informacion_medica AS B on A.ID_INFO_MEDICA=B.ID_INFO_MEDICA
-                                                        INNER JOIN clasexalumno as ca on ca.ID_ALUMNO = a.ID_ALUMNO
-                                                        INNER JOIN clasesxgrado as cg on cg.ID_CLASE = ca.ID_CLASE
-                                                        INNER JOIN seccionesxgrado as sg on sg.ID_GRADO = cg.ID_GRADO
-                                                        INNER JOIN grado AS g on sg.ID_GRADO = g.ID_GRADO
-                                                        INNER JOIN seccion as s on s.ID_SECCION = sg.ID_SECCION and s.ID_SECCION= ca.ID_SECCION 
-                                                        INNER JOIN jornada as j on sg.ID_JORNADA = j.ID_JORNADA AND j.ID_JORNADA = ca.ID_JORNADA
-                                                        UNION ALL
-                                                        SELECT a.ID_ALUMNO,a.NOMBRE,(YEAR(CURDATE())- YEAR(FECHA_NACIMIENTO) edad,a.ESCUELA_PROCEDENCIA,a.UTILIZA_TRANSPORTE,'','','',a.ACTIVO_ALUMNO FROM alumno AS A 
-                                                        inner join informacion_medica AS B on A.ID_INFO_MEDICA=B.ID_INFO_MEDICA
-                                                        WHERE a.ID_ALUMNO NOT IN (SELECT a.ID_ALUMNO
-                                                                                    FROM alumno AS A 
-                                                                                    inner join informacion_medica AS B on A.ID_INFO_MEDICA=B.ID_INFO_MEDICA
-                                                                                    INNER JOIN clasexalumno as ca on ca.ID_ALUMNO = a.ID_ALUMNO
-                                                                                    INNER JOIN clasesxgrado as cg on cg.ID_CLASE = ca.ID_CLASE
-                                                                                    INNER JOIN seccionesxgrado as sg on sg.ID_GRADO = cg.ID_GRADO
-                                                                                    INNER JOIN grado AS g on sg.ID_GRADO = g.ID_GRADO
-                                                                                    INNER JOIN seccion as s on s.ID_SECCION = sg.ID_SECCION
-                                                                                    INNER JOIN jornada as j on sg.ID_JORNADA = j.ID_JORNADA AND j.ID_JORNADA = ca.ID_JORNADA
-                                                                                    WHERE CA.ESTADO=1) 
-                                                        NWHERE NOMBRE LIKE '%$buscar%' or ID_ALUMNO='$buscar'");  
+                            $pa=mysqli_query($conexion, "SELECT `ID_ALUMNO`, `ID_INFO_MEDICA`, `NOMBRE`, `ESCUELA_PROCEDENCIA`, `UTILIZA_TRANSPORTE`, `NOTAS`, `CROQUIS`, `ACTIVO_ALUMNO`, `DIRECCION`, `LUGAR_NACIMIENTO`, `FECHA_NACIMIENTO`, `RELIGION`, `NO_IDENTIDAD` FROM `alumno` 
+                                                         WHERE NOMBRE LIKE '%$buscar%' or ID_ALUMNO='$buscar'");  
                                                                                 }else
                         {
                             $pa=mysqli_query($conexion, "SELECT distinct a.ID_ALUMNO,a.NOMBRE,YEAR(CURDATE())-YEAR(A.FECHA_NACIMIENTO) edad, a.ESCUELA_PROCEDENCIA,a.UTILIZA_TRANSPORTE,g.NOMBRE_GRADO,s.NOMBRE_SECCION,j.NOMBRE_JORNADA,a.ACTIVO_ALUMNO FROM alumno AS A 
@@ -266,7 +246,7 @@
                                                                                     INNER JOIN grado AS g on sg.ID_GRADO = g.ID_GRADO
                                                                                     INNER JOIN seccion as s on s.ID_SECCION = sg.ID_SECCION
                                                                                     INNER JOIN jornada as j on sg.ID_JORNADA = j.ID_JORNADA AND j.ID_JORNADA = ca.ID_JORNADA
-                                                                                    WHERE CA.ESTADO=1)");
+                                                                                    )");
                                                                                 }
                         if(!empty($_POST['confirmar']))
                             {
